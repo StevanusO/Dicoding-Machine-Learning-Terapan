@@ -105,4 +105,11 @@ Dengan:
 
 Sebelumnya kita lihat plot akurasi, val_akurasi, loss dan val_loss saat dilakukan pelatihan model
 
+![Model_Accuracy](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/model_accuracy.png)  
+![Model_Loss](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/model_loss.png)  
+Dapat dilihat dari gambar plot bahwa hasil akurasi dan val_akurasi cukup baik dengan nilai akurasi pada pelatihan ke 200 adalah 99% pada akurasi dan 90% pada val akurasi.  
+Penulis juga menguji model yang dibuat terhadap data test yang sebelumnya sudah dipisah dengan hasil sebagai berikut:  
+![Classification_Report](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/classification_report.png)  
+
+
 
