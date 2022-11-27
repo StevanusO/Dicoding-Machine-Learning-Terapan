@@ -74,13 +74,17 @@ Distribusi pada val_df plot
 
 Dari gambar distribusi dari label, dapat dilihat bahwa terdapat ketidakseimbangan pada label, khususnya pada label _surprise_. Untuk kasus ini tidak dilakukan _balancing class_ dikarenakan model yang dibuat dapat melakukan prediksi dengan performa yang baik.
 ## Data Preparation
+- Merubah label menjadi dari kategorikal menjadi data yang dimengerti mesin, yaitu angka
 - Mengubah teks menjadi tidak _lowercase_
 - Menghapus angka dari teks
 - Menghapus tanda baca dari teks
 - Menghapus _Stopwords_ dari teks
 - Merubah kata pada teks menjadi bentuk dasar
+- Tokenisasi dataset
 ## Modeling
-
+Penulis membuat arsitektur deep learning yang dapat dilihat sebagai berikut:  
+![Model_Summary](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/model_summary.png)  
+Dari gambar diatas dapat dilihat, terdapat 4 bagian, yaitu bagian masukan(embedding), bagian hidden_layer_1(Biderectional), bagian hidden_layer_2(Biderectional) dan bagian keluaran(Dense)   
 ## Evaluation
 
 
