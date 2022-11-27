@@ -74,7 +74,11 @@ Distribusi pada val_df plot
 
 Dari gambar distribusi dari label, dapat dilihat bahwa terdapat ketidakseimbangan pada label, khususnya pada label _surprise_. Untuk kasus ini tidak dilakukan _balancing class_ dikarenakan model yang dibuat dapat melakukan prediksi dengan performa yang baik.
 ## Data Preparation
-
+- Mengubah teks menjadi tidak _lowercase_
+- Menghapus angka dari teks
+- Menghapus tanda baca dari teks
+- Menghapus _Stopwords_ dari teks
+- Merubah kata pada teks menjadi bentuk dasar
 ## Modeling
 
 ## Evaluation
