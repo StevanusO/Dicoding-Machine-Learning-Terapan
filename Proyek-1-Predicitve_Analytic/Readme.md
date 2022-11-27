@@ -14,11 +14,11 @@ Adapun masalah yang diangkat sebagai berikut:
 
 ### Goals
 Adapun tujuan dari proyek ini adalah:
-- Menggunakan Deep Learning untuk mendekteksi apa yang dipikirkan orang lain
+- Menggunakan Deep Learning untuk memprediksi apa yang dipikirkan orang lain
 
 ### Solution Statements
 Adapun Solusi yang penulis tawarkan sebagai berikut:
-- Membangun model deep learning yang mampu mendeteksi perasaan orang lain berdasarkan teks yang diberikan
+- Membangun model deep learning yang mampu memprediksi perasaan orang lain berdasarkan teks yang diberikan
 - Menggunakan Classification Report (Precision, Recall, Accuracy dan F1-Score) untuk mengevaluasi model yang dibuat
 
 ## Data Understanding
