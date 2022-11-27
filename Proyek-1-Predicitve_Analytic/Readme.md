@@ -110,6 +110,35 @@ Sebelumnya kita lihat plot akurasi, val_akurasi, loss dan val_loss saat dilakuka
 Dapat dilihat dari gambar plot bahwa hasil akurasi dan val_akurasi cukup baik dengan nilai akurasi pada pelatihan ke 200 adalah 99% pada akurasi dan 90% pada val akurasi.  
 Penulis juga menguji model yang dibuat terhadap data test yang sebelumnya sudah dipisah dengan hasil sebagai berikut:  
 ![Classification_Report](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/classification_report.png)  
-
-
+Terlihat bahwa model bekerja dengan baik, dari keenam label yang diprediksi didapat seluruh nilai diatas 70%, dengan akurasi test sebesar 90%.
+- Precision
+  - anger
+  dari 275 data yang model prediksi, 91% diprediksi memiliki perasaan marah.    
+  - fear
+  dari 224 data yang model prediksi, 89% diprediksi memiliki perasaan ketakutan.    
+  - joy
+  dari 695 data yang model prediks,i 92% diprediksi memiliki perasaan senang.  
+  - love
+  dari 159 data yang model prediksi, 71% diprediksi memiliki perasaan cinta/suka.  
+  - sadness
+  dari 581 data yang model prediksi, 93% diprediksi memiliki perasaan sedih.  
+  - surprise
+  dari 66 data yang model prediksi, 82% diprediksi memiliki perasaan terkejut.  
+  
+- Recall
+- anger
+  dari 91% yang diprediksi memiliki perasaan marah, hanya 88% menghasilkan benar. 
+  - fear
+  dari 89% yang diprediksi memiliki perasaan ketakutan, hanya 86% menghasilkan benar. 
+  - joy
+  dari 92% yang diprediksi memiliki perasaan senang, hanya 92% menghasilkan benar. 
+  - love
+  dari 71% yang diprediksi memiliki perasaan cinta/suka, hanya 81% menghasilkan benar. 
+  - sadness
+  dari 93% yang diprediksi memiliki perasaan sedih, hanya 94% menghasilkan benar. 
+  - surprise
+  dari 82% yang diprediksi memiliki perasaan terkejut, hanya 71% menghasilkan benar.  
+  
+- F1-Score
+Dari keenam label, dapat dilihat bahwa model menghasilkan performa yang baik, terutama pada label sadness dan joy karena hampir mendekati 100%, untuk label love dan surprise mendapatkan nilai 76% dapat disebabkan karena jumlah data dengan label tersebut tidak banyak.
 
