@@ -71,6 +71,8 @@ Distribusi pada val_df plot
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_val_plot.png">
   <img alt="Distribusi train_df plot." src="https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_val_plot.png">
 </picture>
+
+Dari gambar distribusi dari label, dapat dilihat bahwa terdapat ketidakseimbangan pada label, khususnya pada label _surprise_. Untuk kasus ini tidak dilakukan _balancing class_ dikarenakan model yang dibuat dapat melakukan prediksi dengan performa yang baik.
 ## Data Preparation
 
 ## Modeling
