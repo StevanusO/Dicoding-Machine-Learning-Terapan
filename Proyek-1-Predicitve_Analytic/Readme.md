@@ -85,6 +85,24 @@ Dari gambar distribusi dari label, dapat dilihat bahwa terdapat ketidakseimbanga
 Penulis membuat arsitektur deep learning yang dapat dilihat sebagai berikut:  
 ![Model_Summary](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/model_summary.png)  
 Dari gambar diatas dapat dilihat, terdapat 4 bagian, yaitu bagian masukan(embedding), bagian hidden_layer_1(Biderectional), bagian hidden_layer_2(Biderectional) dan bagian keluaran(Dense)   
+Model dilatih dengan GoogleColab menggunkaan _GPU accelaration_
 ## Evaluation
+Metrik yang digunakan adalah classification report yang terdiri dari 4 metrik, yaitu:
+1. Accuracy
+2. Precision
+3. Recall
+4. F1 Score  
+Berikut merupakan rumus dari keempat metrik tersebut:
+1. Accuracy = (TP + TN) / (TP + TN + FP + FN)
+2. Precision = TP / (TP + FP)
+3. Recall = TP / (TP + FN)
+4. F1 Score = 2 * (Precision * Recall) / (Precision + Recall)    
+Dengan:
+  - TP: True Positive
+  - TN: True Negative
+  - FP: False Positive
+  - FN: False Negative
+
+Sebelumnya kita lihat plot akurasi, val_akurasi, loss dan val_loss saat dilakukan pelatihan model
 
 
