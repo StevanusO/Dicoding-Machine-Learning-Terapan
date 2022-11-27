@@ -40,8 +40,7 @@ Disini dapat dilihat bahwa dataset secara default sudah terbagi menjadi Train (8
 ![Dataset_Shape](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/c826104afd578f7e9d16acf17b9943a734105cbd/Proyek-1-Predicitve_Analytic/img/dataset_shape.png)
 
 #### Distribusi dari Label pada Train, Test dan Val
-- Train 
-Distribusi pada train_df  
+- Train   
 ![Distribusi_pada_train_df_numeric](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/a469ab8c1b265a637d7893ed28ee7d03093bca38/Proyek-1-Predicitve_Analytic/img/distribusi_train_numeric.png)
 
 Distribusi pada train_df plot  
@@ -52,7 +51,26 @@ Distribusi pada train_df plot
 </picture>
 
 - Test 
+Distribusi pada test_df  
+![Distribusi_pada_test_df_numeric](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_test_numeric.png)
+
+Distribusi pada test_df plot  
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_test_plot.png">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_test_plot.png">
+  <img alt="Distribusi train_df plot." src="https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_test_plot.png">
+</picture>
+
 - Val
+Distribusi pada val_df  
+![Distribusi_pada_val_df_numeric](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/628992cd839225b3eb1894a33e4f4f8834cc8b4e/Proyek-1-Predicitve_Analytic/img/distribusi_val_numeric.png)
+
+Distribusi pada val_df plot  
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_val_plot.png">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_val_plot.png">
+  <img alt="Distribusi train_df plot." src="https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_val_plot.png">
+</picture>
 ## Data Preparation
 
 ## Modeling
