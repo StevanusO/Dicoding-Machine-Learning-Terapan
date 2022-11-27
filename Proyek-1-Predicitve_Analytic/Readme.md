@@ -35,7 +35,15 @@ Variabel pada dataset Emotions dataset for NLP adalah sebagai berikut:
   - 5: surprise 
   
 ### Exploratory Data Analysis
+Disini dapat dilihat bahwa dataset secara default sudah terbagi menjadi Train (80%), Test (10%) dan Val (10%):
 
+![Dataset_Shape](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/c826104afd578f7e9d16acf17b9943a734105cbd/Proyek-1-Predicitve_Analytic/img/dataset_shape.png)
+
+#### Distribusi dari Label pada Train, Test dan Val
+##### Train
+
+##### Test
+##### Val
 ## Data Preparation
 
 ## Modeling
