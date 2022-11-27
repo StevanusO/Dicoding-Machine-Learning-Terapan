@@ -44,8 +44,13 @@ Disini dapat dilihat bahwa dataset secara default sudah terbagi menjadi Train (8
 Distribusi pada train_df
 ![Distribusi_pada_train_df_numeric](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/a469ab8c1b265a637d7893ed28ee7d03093bca38/Proyek-1-Predicitve_Analytic/img/distribusi_train_numeric.png)
 
+
 Distribusi pada train_df plot
 
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_train_plot.png">
+  <img alt="Distribusi train_df plot." src="https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/distribusi_train_plot.png">
+</picture>
 
 - Test 
 - Val
