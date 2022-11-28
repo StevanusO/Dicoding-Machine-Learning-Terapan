@@ -207,7 +207,9 @@ rangkuman dari arsitektur dapat dilihat di gambar 5
 
 ![rangkuman model](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/model_summary.png) 
 
-
+## Evaluasi
+***
+Pada proyek ini menggunakan model _deep learning_ bertipe _classification_ yang berarti jika 
 Referensi:  
   [1]   
   [Prabowo, Rudy, and Mike Thelwall. “Sentiment Analysis: A Combined Approach.” Journal of Informetrics, vol. 3, no. 2, 2009, pp. 143–157., https://doi.org/10.1016/j.joi.2009.01.003.](https://www.sciencedirect.com/science/article/abs/pii/S1751157709000108)
