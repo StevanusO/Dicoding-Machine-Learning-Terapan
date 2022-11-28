@@ -211,9 +211,9 @@ rangkuman dari arsitektur dapat dilihat di gambar 5
 ***
 Pada proyek ini menggunakan model _deep learning_ bertipe _classification_ yang berarti jika 
 Referensi:  
-  [1]   
+  [1]    
   [Prabowo, Rudy, and Mike Thelwall. “Sentiment Analysis: A Combined Approach.” Journal of Informetrics, vol. 3, no. 2, 2009, pp. 143–157., https://doi.org/10.1016/j.joi.2009.01.003.](https://www.sciencedirect.com/science/article/abs/pii/S1751157709000108)
-  [2]
+  [2]  
   [Grefenstette, Gregory. “Tokenization.” Text, Speech and Language Technology, 1999, pp. 117–133., https://doi.org/10.1007/978-94-015-9273-4_9.](https://link.springer.com/chapter/10.1007/978-94-015-9273-4_9)
-  [3]
+  [3]  
   [LeCun, Yann, et al. “Deep Learning.” Nature News, Nature Publishing Group, 27 May 2015, https://www.nature.com/articles/nature14539.](https://www.nature.com/articles/nature14539#citeas)
