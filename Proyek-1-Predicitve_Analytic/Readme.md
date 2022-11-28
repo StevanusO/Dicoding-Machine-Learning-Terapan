@@ -118,6 +118,8 @@ Dari hasil _output_ dapat dilihat bahwa teks yang diambil dari masing-masing dat
 - Merubah kata menjadi _lowercase_ pada variabel _text_
 - Menghapus _stopwords_ pada variabel _text_
 - Merubah variabel label menjadi numerik
+- One Hot Encoding label
+- Tokenisasi teks
 #### _Text Processing_
 Pada bagian ini, teks yang ada akan di _process_ untuk menghapus, merubah dan _lowercase_, untuk melakukan itu digunakan beberapa _library_ yaitu _re, nltk dan pandas_
 Dibuat sebuah fungsi baru yang bernama *clean_text* yang tugasnya adalah memanggil fungsi yang ada pada 3 _library_.   
@@ -143,9 +145,45 @@ Menghapus _stopwords_ menggunakan _nltk.corpus.stopwords_
 `stopwords = stopwords.words('english') #panggil stopwords dan set ke bahasa inggris`    
 `text = ' '.join([word for word in text.split() if word not in (stopwords)])`    
 
-Jika kita cek perubahan yang dilakukan dengan fungsi `head()` maka hasilnya akan seperti gambar 5.  
+Jika kita cek perubahan yang dilakukan dengan fungsi `head()` maka hasilnya akan seperti Tabel 3.  
+Tabel 3. Tampilan _sample_ dari train_df setelah _text processing_ dilakukan.  
+| text                                                | label   | clean_text                                        | encoded_label |
+| --------------------------------------------------- | ------- | ------------------------------------------------- | ------------- |
+| can go from feeling so hopeless to so damned...     | sadness | go feeling hopeless damned hopeful around some..  | 4             |
+| i didnt feel humiliated                             | sadness | feel humiliated                                   | 4             |
+| im grabbing a minute to post i feel greedy wrong    | anger   | grabbing minute post feel greedy wrong grabbin... | 0             |  
+
+#### Merubah label menjadi numerik
+Pada bagian ini variabel label akan dirubah dari kategorikal menjadi numerik. Variabel label memiliki 6 kategori yaitu _anger, fear, joy, love, sadness_ dan _surprise_. kategori ini akan dirubah dengan menggunakan _LabelEncoder dari library sklearn.preprocessing_. 
+variabel label dirubah di semua _DataFrame_.  
+
+`from sklearn.preprocessing import LabelEncoder`    
+`encoder = LabelEncoder()#definisikan LabelEncoder`  
+`train_df["encoded_label"] = encoder.fit_transform(train_df["label"])`   
+`val_df["encoded_label"] = encoder.transform(val_df["label"])`  
+`test_df["encoded_label"] = encoder.transform(test_df["label"])`  
+`#akan digunakan train_df dan val_df untuk proses train dan validasi`  
+`X_train = train_df['clean_text']`  
+`X_test = val_df['clean_text']`  
+`y_train = train_df['encoded_label']`  
+`y_test = val_df['encoded_label']`    
+
+Tabel 4. Label dirubah dengan LabelEncoder
+| label    | label_encode |
+| -------- | ------------ |
+| anger    | 0            |
+| fear     | 1            |
+| joy      | 2            |
+| love     | 3            |
+| sadness  | 4            |
+| surprise | 5            |
 
 
+#### One Hot Encoding
+Pada bagian ini variabel label dari 1 kolom, yang berisi 6 kategori akan menjadi 6 kolom yang memiliki nilai 0 dan 1 saja. Dengan proses ini mesin dapat menebak kategori yang ada di dataset. Untuk melakukan One Hot Encoding digunakan `to_categorical` dari _library keras.utils_
+
+#### Tokenisasi
+Pada bagian ini akan digunakan `Tokenizer, dan pad_sequences` dari _library tensorflow.keras_, Tujuan tokenisasi adalah untuk membuat kamus dari teks yang berisi tiap kata dan merubah kata menjadi _integer_. Pertama dimulai dnegan membuat kamus dari teks, teks yang akan digunakan hanya _DataFrame train_, penggunaan satu _DataFrame_ ini untuk mencegah agar mesin tidak seolah-olah mengetahui jawaban/kata yang ada di kamus saat dilakukan _test/val_ setelah dibuat kamus dengan `tokenizer.fit_on_texts(X_train)`, selanjutnya teks dari 2 _DataFrame_ akan dirubah menjadi _integer_ perubahan menjadi _integer_ ini 
 Referensi:  
   [1]   
   [Prabowo, Rudy, and Mike Thelwall. “Sentiment Analysis: A Combined Approach.” Journal of Informetrics, vol. 3, no. 2, 2009, pp. 143–157., https://doi.org/10.1016/j.joi.2009.01.003.](https://www.sciencedirect.com/science/article/abs/pii/S1751157709000108)
