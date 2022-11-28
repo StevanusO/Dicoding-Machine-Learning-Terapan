@@ -69,13 +69,14 @@ Tabel 2. Tampilan _sample_ dari dataset **train_df** dengan bentuk _DataFrame pa
 ### Menampilkan informasi dari dataset
 Pada bagian ini akan digunakan fungsi shape() dan value_counts() untuk mengetahui jumlah dataset dan distribusi dari label, informasi dari jumlah dan distribusi dapat dilihat pada tabel 3-6.  
 
-Tabel 3. _Dataset Shape_    
+Tabel 3. _Dataset Shape_. 
 
 | DataFrame | Shape      |
-| ---- ---- | ---------- |
+| --------- | ---------- |
 | train     | (16000, 2) |
 | test      | (2000, 2)  |
 | val       | (2000, 2)  |
+  
 
 Tabel 4. distribusi label pada **train_df**  
 
