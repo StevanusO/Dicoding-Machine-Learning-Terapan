@@ -7,7 +7,7 @@ Sebagai respon dari pertumbuhan kebebasan berpendapat, informasi teks ini dapat 
 
 Sentimen, pendapat, opini, masukan dan kritik yang diberikan di contoh ini sangat bermanfaat sebagai sebuah indikator.[1] Secara umum sentimen ini dapat dikategorikan sebagai _postive_ dan _negative_ atau indikator yang lebih spesifik, sebagai contoh _anger_, _fear_, _joy_, _love_, _sadness_, dan surprise_ atau indikator lain.  
 
-Dengan indikator diatas, sebuah tugas untuk menganalisa sentimen ini dapat di interpretasikan sebnagai tugas klasifikasi dimana tiap kategori menyatakan sebuah sentimen. Analisa Sentimen ini berguna bagi perusahaan atau pemiliki usaha sebagai tolak ukur untuk mengukur seberapa diterimanya produk yang diberikan dan menentukan strategi untuk meningkatkan kualitas dari produk.[1]
+Dengan indikator diatas, sebuah tugas untuk menganalisa sentimen ini dapat di interpretasikan sebagai tugas klasifikasi dimana tiap kategori menyatakan sebuah sentimen. Analisa Sentimen ini berguna bagi perusahaan atau pemiliki usaha sebagai tolak ukur untuk mengukur seberapa diterimanya produk yang diberikan dan menentukan strategi untuk meningkatkan kualitas dari produk.[1]
 
 Dalam praktiknya, analisis sentimen bisa dilakukan dengan melihat kata demi kata pada kalimat dan mencermati arti dari kata, praktik ini cukup merepotkan dan memakan banyak dilakukan jika sentimen yang diberikan terlalu banyak, maka dari itu dibuatlah sebuah algoritma untuk prediksi kategori dari sentimen yang diberikan oleh individu, algoritma yang dibuat adalah dengan membuat _model Deep Learning_ yang nanti akan dilatih dan di_test_ dengan 20000 data teks.
 ## Business Understanding
@@ -154,19 +154,7 @@ Tabel 3. Tampilan _sample_ dari train_df setelah _text processing_ dilakukan.
 | im grabbing a minute to post i feel greedy wrong    | anger   | grabbing minute post feel greedy wrong grabbin... | 0             |  
 
 #### Merubah label menjadi numerik
-Pada bagian ini variabel label akan dirubah dari kategorikal menjadi numerik. Variabel label memiliki 6 kategori yaitu _anger, fear, joy, love, sadness_ dan _surprise_. kategori ini akan dirubah dengan menggunakan _LabelEncoder dari library sklearn.preprocessing_. 
-variabel label dirubah di semua _DataFrame_.  
-
-`from sklearn.preprocessing import LabelEncoder`    
-`encoder = LabelEncoder()#definisikan LabelEncoder`  
-`train_df["encoded_label"] = encoder.fit_transform(train_df["label"])`   
-`val_df["encoded_label"] = encoder.transform(val_df["label"])`  
-`test_df["encoded_label"] = encoder.transform(test_df["label"])`  
-`#akan digunakan train_df dan val_df untuk proses train dan validasi`  
-`X_train = train_df['clean_text']`  
-`X_test = val_df['clean_text']`  
-`y_train = train_df['encoded_label']`  
-`y_test = val_df['encoded_label']`    
+Pada bagian ini variabel label akan dirubah dari kategorikal menjadi numerik. Variabel label memiliki 6 kategori yaitu _anger, fear, joy, love, sadness_ dan _surprise_. kategori ini akan dirubah menjadi numerik (0-5) dengan menggunakan `LabelEncoder`.   
 
 Tabel 4. Label dirubah dengan LabelEncoder
 | label    | label_encode |
@@ -202,9 +190,14 @@ Arsitektur Model yang digunakan adalah sebagai berikut:
 2. hidden layer 1 (Biderectional LSTM) dengan 128 neuron, `return_sequences = True` artinya keluaran dari hidden layer ini akan mengembalikan sebuah _output_ di _layer_ selanjutnya.  
 3. hidden layer 2 (Biderectional LSTM) dnegan 256 neuron.  
 4. _Layer Output_ (Dense) yang akan menerima 6 neuron atau setara dengan jumlah kategori yang ada pada label.  
-rangkuman dari arsitektur dapat dilihat di gambar 5.    
-![model_summary](https://user-images.githubusercontent.com/48939864/204279171-2628847c-e32c-4596-80af-0759f5b9b4df.png)  
-gambar 5. Rangkuman _Model_  
+rangkuman dari arsitektur dapat dilihat di tabel 5.  
+Tabel 5. Rangkuman _Model_.  
+| *layer* | Jenis *layer*   | *Neuron*                 |
+| ------- | --------------  | ------------------------ |
+|    1    |  *Input*        | Input: 14977, Output: 64 |
+|    2    |  *Hidden Layer* | 128                      |
+|    3    |  *Hidden Layer* | 256                      |
+|    4    |  *Output*       | 6                        |
 
 ## Evaluasi
 ***
@@ -230,14 +223,14 @@ Dengan:
 - FN: False Negative
 
 ![model_accuracy](https://user-images.githubusercontent.com/48939864/204292084-ff41b8d6-5ca5-4959-8681-a7e820f97d9e.png)  
-gambar 6 Model Accuracy Plot  
+gambar 5 Model Accuracy Plot  
 
-Dapat dilihat dari gambar 6 bahwa setelah _epochs_ ke 200 model mendapatkan skor akurasi yang baik dengan akurasi _train_: 99% dan akurasi validasi: 90%
+Dapat dilihat dari gambar 5 bahwa setelah _epochs_ ke 200 model membuat model yang _Good Fit_ dengan nilai akurasi _train_ : 99% dan akurasi validasi: 90%  
 
-Penulis juga menguji model dengan data _test_ yang sebelumnya sudah dipisahkan dengan hasil seperti berikut gambar 7.  
+Penulis juga menguji model dengan data _test_ yang sebelumnya sudah dipisahkan dengan hasil seperti berikut gambar 6.  
 
 ![classification_report](https://user-images.githubusercontent.com/48939864/204292922-080dd86c-e5a3-4d89-9c91-0e8ccabebf8c.png)  
-gambar 7. _Classification Report_  
+gambar 6. _Classification Report_  
 
 Terlihat bahwa model bekerja dengan baik, dari keenam label yang diprediksi didapat seluruh nilai diatas 70%, dengan akurasi test sebesar 90%.
 - Precision
@@ -271,6 +264,8 @@ Terlihat bahwa model bekerja dengan baik, dari keenam label yang diprediksi dida
 - F1-Score
 Dari keenam label, dapat dilihat bahwa model menghasilkan performa yang baik, terutama pada label sadness dan joy karena hampir mendekati 100%, untuk label love dan surprise mendapatkan nilai 76% dapat disebabkan karena jumlah data dengan label tersebut tidak banyak.
 
+- Kesimpulan
+Dari hasil gambar 5 kita dapat melihat bahwa model mendapatkan performa yang baik dalam _train_ dengan akurasi 99% dan validasi 90%, performa baik ini juga dibuktikan dengan evaluasi _model_ menggunakan data _test_ yang disiapkan. Dari data _test_ dapat dibuat _classification report_ yang ada di gambar 6. Dari gambar 6 kita dapat melihat skor dari _model_ terhadap 3 metrik yang di _generate_ oleh _classification report_, dilihat dari hasil dapat disimpulkan bahwa _model_ yang dibuat _Good Fit_.
 Referensi:  
   [1]    
   [Prabowo, Rudy, and Mike Thelwall. “Sentiment Analysis: A Combined Approach.” Journal of Informetrics, vol. 3, no. 2, 2009, pp. 143–157., https://doi.org/10.1016/j.joi.2009.01.003.](https://www.sciencedirect.com/science/article/abs/pii/S1751157709000108)
