@@ -31,7 +31,7 @@ Dataset yang digunakan dapat diakses menggunakan [Kaggle](https://www.kaggle.com
 Informasi dari dataset dapat dirangkum sebagai berikut:
 Tabel 1. Rangkuman informasi Dataset    
 | Jenis                  | Keterangan                                                                                                        |
-| ---------------------- | ------------                                                                                                      |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Sumber                 | [Kaggle Dataset: Emotions dataset for NLP](https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp)  |
 | Lisensi                | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)                                                   |
 | Kategori               | Sosial                                                                                                            |
@@ -66,7 +66,7 @@ Tabel 2. Tampilan _sample_ dari dataset **train_df** dengan bentuk _DataFrame pa
 | - | ---------------------------------------------------- | ------- |
 | 0 | i didnt feel humiliated                              | sadness |
 | 1 | i can go from feeling so hopeless to so damned..     | sadness |
-| 2 | im grabbing a minute to post i feel greedy wrong	a  | anger   |
+| 2 | im grabbing a minute to post i feel greedy wrong	a   | anger   |
 | 3 | i am ever feeling nostalgic about the fireplac..     | love    |
 | 4 | i am feeling grouchy                                 |  anger  |
 ### Menampilkan informasi dari dataset
@@ -146,7 +146,7 @@ Menghapus _stopwords_ menggunakan _nltk.corpus.stopwords_
 `text = ' '.join([word for word in text.split() if word not in (stopwords)])`    
 
 Jika kita cek perubahan yang dilakukan dengan fungsi `head()` maka hasilnya akan seperti Tabel 3.  
-Tabel 3. Tampilan _sample_ dari train_df setelah _text processing_ dilakukan.  
+Tabel 3. Tampilan _sample_ dari train_df setelah _text processing_ dilakukan.   
 | text                                                | label   | clean_text                                        | encoded_label |
 | --------------------------------------------------- | ------- | ------------------------------------------------- | ------------- |
 | can go from feeling so hopeless to so damned...     | sadness | go feeling hopeless damned hopeful around some..  | 4             |
@@ -192,12 +192,14 @@ Arsitektur Model yang digunakan adalah sebagai berikut:
 4. _Layer Output_ (Dense) yang akan menerima 6 neuron atau setara dengan jumlah kategori yang ada pada label.  
 rangkuman dari arsitektur dapat dilihat di tabel 5.  
 Tabel 5. Rangkuman _Model_.  
-| *layer* | Jenis *layer*   | *Neuron*                 |
-| ------- | --------------  | ------------------------ |
-|    1    |  *Input*        | Input: 14977, Output: 64 |
-|    2    |  *Hidden Layer* | 128                      |
-|    3    |  *Hidden Layer* | 256                      |
-|    4    |  *Output*       | 6                        |
+
+| layer   | Jenis layer     | Neuron                   |  
+| ------- | --------------- | ------------------------ |  
+|    1    |  Input          | Input: 14977, Output: 64 |  
+|    2    |  Hidden Layer   | 128                      |  
+|    3    |  Hidden Layer   | 256                      |  
+|    4    |  Output         | 6                        |  
+
 
 ## Evaluasi
 ***
