@@ -187,7 +187,17 @@ Pada bagian ini akan digunakan `Tokenizer, dan pad_sequences` dari _library tens
 
 Setelah teks di tokenisasi, teks di tiap _DataFrame_ perlu kita pastikan memiliki panjang yang sama, untuk melakukan itu digunakan fungsi `pad_sequences` dari _library tensorflow.keras_. teks dari 3 _DataFrame_ memiliki panjang 128, jika teks melebihi dari 128 maka bagian belakang akan dihapus.
 
+## Modeling
+***
+#### Deep Learning
+_Deep Learning_ adalah teknik yang menginzinkan model komputasi yang terdiri dari banyak _layer_ proses, _layer_ ini akan mempelajari representasi dari data dengan level abstraksi yang beragam. _Deep Learning_ menemukan struktur yang menarik dengan _dataset_ yang besar dengan menggunakan algoritma _backpropagation_, algoritma ini untuk mengindikasi bagaimana mesin harus mengganti parameter yang digunakan untuk menghitung tiap _layer_ dari representasi _layer_ sebelumnya.[3]
+##### Tahapan umum Cara kerja Deep Learning
+Data akan masuk ke _layer_ pertama, setelah itu di _layer_ pertama akan terdapat sejumlah neuron yang masing-masing akan memproses informasi yang telah diberikan, setiap neuron yang ada di _layer_ ini merepresentasikan informasi yang diproses, misal dengan dataset yang dipakai, neuron 1 bisa saja merepresentasikan sentimen _anger_, informasi yang terbentuk akan disalurkan ke _channel_ penghubung. Sebelum disalurkan dihitung nilai _weight & bias_ yang nilainya akan diterapkan di _activation function_. Hasil dari _activation function_ akan menentukan apakah neuron di _layer_ selanjutnya dapat diaktifkan. Setiap neuron yang diaktifkan akan meneruskan informasi ke _layer_ selanjutnya, ini berlanjut hingga _layer_ terakhir kedua, di layer terakhir kedua, hanya akan ada satu neuron yang diaktifkan untuk menentukan keluaran atau prediksi.
 
 Referensi:  
   [1]   
   [Prabowo, Rudy, and Mike Thelwall. “Sentiment Analysis: A Combined Approach.” Journal of Informetrics, vol. 3, no. 2, 2009, pp. 143–157., https://doi.org/10.1016/j.joi.2009.01.003.](https://www.sciencedirect.com/science/article/abs/pii/S1751157709000108)
+  [2]
+  [Grefenstette, Gregory. “Tokenization.” Text, Speech and Language Technology, 1999, pp. 117–133., https://doi.org/10.1007/978-94-015-9273-4_9.](https://link.springer.com/chapter/10.1007/978-94-015-9273-4_9)
+  [3]
+  [LeCun, Yann, et al. “Deep Learning.” Nature News, Nature Publishing Group, 27 May 2015, https://www.nature.com/articles/nature14539.](https://www.nature.com/articles/nature14539#citeas)
