@@ -30,6 +30,7 @@ Solusi yang dapat dilakukan sebagai berikut:
 Dataset yang digunakan dapat diakses menggunakan [Kaggle](https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp)  
 Informasi dari dataset dapat dirangkum sebagai berikut:
 Tabel 1. Rangkuman informasi Dataset    
+
 | Jenis                  | Keterangan                                                                                                        |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Sumber                 | [Kaggle Dataset: Emotions dataset for NLP](https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp)  |
@@ -57,6 +58,7 @@ Pada bagian ini akan digunakan fungsi `pandas.read_csv()` untuk membaca berkas t
 Setelah 3 berkas dibaca dan disimpan di 3 variabel **train_df**, **test_df** dan **val_df**, akan dilihat _sample_ data dari **train_df** dengan menggunakan `train_df.head()`, lalu tampilannya akan seperti tabel 2.
 
 Tabel 2. Tampilan _sample_ dari dataset **train_df** dengan bentuk _DataFrame pandas_.  
+
 |   | text                                                 | label   |
 | - | ---------------------------------------------------- | ------- |
 | 0 | i didnt feel humiliated                              | sadness |
@@ -146,7 +148,9 @@ Merubah kata menjadi bentuk dasar menggunakan _nltk.stem.WordNetLemmatizer_, car
 Menghapus _stopwords_ menggunakan _nltk.corpus.stopwords_, cara kerjanya adalah dengan mengecek seluruh kata yang ada di teks, kemudian akan dibandingkan dengan _list_ yang ada di _stopwords_ jika ditemukan kata pada teks yang ada di _list stopwords_ maka akan dihapus.      
 
 Jika kita cek perubahan yang dilakukan dengan fungsi `head()` maka hasilnya akan seperti Tabel 7.  
+
 Tabel 7. Tampilan _sample_ dari train_df setelah _text processing_ dilakukan.   
+
 | text                                                | label   | clean_text                                        | encoded_label |
 | --------------------------------------------------- | ------- | ------------------------------------------------- | ------------- |
 | can go from feeling so hopeless to so damned...     | sadness | go feeling hopeless damned hopeful around some..  | 4             |
@@ -157,6 +161,7 @@ Tabel 7. Tampilan _sample_ dari train_df setelah _text processing_ dilakukan.
 Pada bagian ini variabel label akan dirubah dari kategorikal menjadi numerik. Variabel label memiliki 6 kategori yaitu _anger, fear, joy, love, sadness_ dan _surprise_. kategori ini akan dirubah menjadi numerik (0-5) dengan menggunakan `LabelEncoder` seperti di tabel 8.   
 
 Tabel 8. Label dirubah dengan LabelEncoder
+
 | label    | label_encode |
 | -------- | ------------ |
 | anger    | 0            |
@@ -191,6 +196,7 @@ Arsitektur Model yang digunakan adalah sebagai berikut:
 3. hidden layer 2 (Biderectional LSTM) dnegan 256 neuron.  
 4. _Layer Output_ (Dense) yang akan menerima 6 neuron atau setara dengan jumlah kategori yang ada pada label.  
 rangkuman dari arsitektur dapat dilihat di tabel 9.  
+
 Tabel 9. Rangkuman _Model_.  
 
 | layer   | Jenis layer     | Neuron                   |  
@@ -226,6 +232,7 @@ Dengan:
 
 
 ![model_accuracy](https://user-images.githubusercontent.com/48939864/204292084-ff41b8d6-5ca5-4959-8681-a7e820f97d9e.png)  
+
 gambar 1. Model Accuracy Plot  
 
 Dapat dilihat dari gambar 1 bahwa setelah _epochs_ ke 200 model membuat model yang _Good Fit_ dengan nilai akurasi _train_ : 99% dan akurasi validasi: 90%
