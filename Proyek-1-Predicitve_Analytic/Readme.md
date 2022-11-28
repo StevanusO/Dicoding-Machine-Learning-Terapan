@@ -53,12 +53,7 @@ Pada proyek ini _dataset_ di download melalui kaggle, untuk mendownload _dataset
 `od.download('https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp')`  
 setelah di _run_ akan diminta _username_ dan kaggle.json _key_.
 ### Membaca _dataset_ ke _DataFrame pandas_
-Pada bagian ini akan digunakan `pandas.read_csv()` untuk membaca berkas txt, karena berkas bersifat txt, tidak memiliki _header_ dan pemisah antara variabel _text_ dan _label_ adalah ";" maka kita dapat menulisnya sebagai berikut:  
-`train_df = pd.read_csv("../content/emotions-dataset-for-nlp/train.txt", sep=';', header=None, names=['text', 'label'])`    
-
-`test_df = pd.read_csv("../content/emotions-dataset-for-nlp/test.txt", sep=';', header=None, names=['text', 'label'])`  
-
-`val_df = pd.read_csv("../content/emotions-dataset-for-nlp/val.txt", sep=';', header=None, names=['text', 'label'])`  
+Pada bagian ini akan digunakan fungsi `pandas.read_csv()` untuk membaca berkas txt, karena berkas bersifat txt, tidak memiliki _header_ dan pemisah antara variabel _text_ dan _label_ adalah ";"
 Setelah 3 berkas dibaca dan disimpan di 3 variabel **train_df**, **test_df** dan **val_df**, akan dilihat _sample_ data dari **train_df** dengan menggunakan `train_df.head()`, lalu tampilannya akan seperti tabel 2.
 
 Tabel 2. Tampilan _sample_ dari dataset **train_df** dengan bentuk _DataFrame pandas_.  
