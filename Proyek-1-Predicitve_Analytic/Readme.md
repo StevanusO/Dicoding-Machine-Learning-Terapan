@@ -130,20 +130,20 @@ Menghapus angka menggunakan _re_ atau _regular expression_
 `num.sub(r'', text)`  
 
 Menghapus tanda baca menggunakan _re_    
-`punctuations = '@#!?+&*[]-%.:/();$=><|{}^' + "'`"`    
-`for p in punctuations:`   
- `  text = text.replace(p, f' {p} ') `    
+`punctuations = '@#!?+&*[]-%.:/();$=><|{}^'`   
+`for p in punctuations:`     
+ `  text = text.replace(p, f' {p} ') `      
  
 Merubah kata menjadi bentuk dasar menggunakan _nltk.stem.WordNetLemmatizer_     
 `lemmatizer = WordNetLemmatizer()#panggil fungsi WordNet dari nltk`  
-`stop_words = [word for word in text.split() if word not in (stopwords)]`  
-`text = ' '.join([lemmatizer.lemmatize(contractions.fix(lower_text(text))) for txt in text.split() if txt not in stop_words])`  
+`stop_words = [word for word in text.split() if word not in (stopwords)]`    
+`text = ' '.join([lemmatizer.lemmatize(contractions.fix(lower_text(text))) for txt in text.split() if txt not in stop_words])`    
 
-Menghapus _stopwords_ menggunakan _nltk.corpus.stopwords_
-`stopwords = stopwords.words('english') #panggil stopwords dan set ke bahasa inggris`  
-`text = ' '.join([word for word in text.split() if word not in (stopwords)])`  
+Menghapus _stopwords_ menggunakan _nltk.corpus.stopwords_  
+`stopwords = stopwords.words('english') #panggil stopwords dan set ke bahasa inggris`    
+`text = ' '.join([word for word in text.split() if word not in (stopwords)])`    
 
-Jika kita cek perubahan yang dilakukan dengan fungsi `head()` maka hasilnya akan seperti gambar 5.
+Jika kita cek perubahan yang dilakukan dengan fungsi `head()` maka hasilnya akan seperti gambar 5.  
 
 
 Referensi:  
