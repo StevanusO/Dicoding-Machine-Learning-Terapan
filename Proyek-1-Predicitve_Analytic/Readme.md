@@ -124,26 +124,13 @@ Dari hasil _output_ dapat dilihat bahwa teks yang diambil dari masing-masing dat
 Pada bagian ini, teks yang ada akan di _process_ untuk menghapus, merubah dan _lowercase_, untuk melakukan itu digunakan beberapa _library_ yaitu _re, nltk dan pandas_
 Dibuat sebuah fungsi baru yang bernama *clean_text* yang tugasnya adalah memanggil fungsi yang ada pada 3 _library_.   
 
-_lowercase_ teks menggunakan _pandas_
-`text.lower()`    
+_lowercase_ teks menggunakan _pandas_ dengan menggunakan fungsi `lower()`  
 
-Menghapus angka menggunakan _re_ atau _regular expression_  
-`num = re.compile(r'[-+]?[.\d]*[\d]+[:,.\d]*')`  
-`num.sub(r'', text)`  
+Menghapus angka dan tanda baca menggunakan _re_ atau _regular expression_, cara kerjanya adalah dengan mendefiniskan sebuah pola yang akan dicek menggunakan _regex_ jika ada maka akan dihapus.  
 
-Menghapus tanda baca menggunakan _re_    
-`punctuations = '@#!?+&*[]-%.:/();$=><|{}^'`   
-`for p in punctuations:`     
- `  text = text.replace(p, f' {p} ') `      
- 
-Merubah kata menjadi bentuk dasar menggunakan _nltk.stem.WordNetLemmatizer_     
-`lemmatizer = WordNetLemmatizer()#panggil fungsi WordNet dari nltk`  
-`stop_words = [word for word in text.split() if word not in (stopwords)]`    
-`text = ' '.join([lemmatizer.lemmatize(contractions.fix(lower_text(text))) for txt in text.split() if txt not in stop_words])`    
+Merubah kata menjadi bentuk dasar menggunakan _nltk.stem.WordNetLemmatizer_, cara kerjanya adalah dengan mengecek seluruh kata yang ada di teks, kemudian akan dibandingkan dengan _list_ yang ada di _WordNetLemmatizer_ jika ditemukan kata yang belum pada bentuk dasar maka akan dirubah dengan bentuk dasar.   
 
-Menghapus _stopwords_ menggunakan _nltk.corpus.stopwords_  
-`stopwords = stopwords.words('english') #panggil stopwords dan set ke bahasa inggris`    
-`text = ' '.join([word for word in text.split() if word not in (stopwords)])`    
+Menghapus _stopwords_ menggunakan _nltk.corpus.stopwords_, cara kerjanya adalah dengan mengecek seluruh kata yang ada di teks, kemudian akan dibandingkan dengan _list_ yang ada di _stopwords_ jika ditemukan kata pada teks yang ada di _list stopwords_ maka akan dihapus.      
 
 Jika kita cek perubahan yang dilakukan dengan fungsi `head()` maka hasilnya akan seperti Tabel 3.  
 Tabel 3. Tampilan _sample_ dari train_df setelah _text processing_ dilakukan.   
@@ -230,10 +217,24 @@ gambar 5 Model Accuracy Plot
 
 Dapat dilihat dari gambar 5 bahwa setelah _epochs_ ke 200 model membuat model yang _Good Fit_ dengan nilai akurasi _train_ : 99% dan akurasi validasi: 90%
 
-Penulis juga menguji model dengan data _test_ yang sebelumnya sudah dipisahkan dengan hasil seperti berikut gambar 6.  
+Penulis juga menguji model dengan data _test_ yang sebelumnya sudah dipisahkan dengan hasil seperti berikut tabel 6.  
 
-![classification_report](https://user-images.githubusercontent.com/48939864/204292922-080dd86c-e5a3-4d89-9c91-0e8ccabebf8c.png)  
-gambar 6. _Classification Report_  
+Tabel 6. _Classification Report_
+
+|              | precision | recall | f1-score | support |
+| ------------ | --------- | ------ | -------- | ------- |
+| anger        | 0.91      | 0.88   | 0.89     | 275     |
+| fear         | 0.89      | 0.86   | 0.88     | 224     |
+| joy          | 0.92      | 0.92   | 0.92     | 695     |
+| love         | 0.71      | 0.81   | 0.76     | 159     |
+| sadness      | 0.93      | 0.94   | 0.94     | 581     |
+| surprise     | 0.82      | 0.82   | 0.76     | 66      |  
+
+|               |      |      |      | support |
+| ------------- | ---- | ---- | ---- | ------- |
+| accuracy      |      |      | 0.90 | 2000    |
+| macro avg     | 0.86 | 0.85 | 0.86 | 2000    |
+| weighted avg  | 0.90 | 0.90 | 0.90 | 2000    |
 
 Terlihat bahwa model bekerja dengan baik, dari keenam label yang diprediksi didapat seluruh nilai diatas 70%, dengan akurasi test sebesar 90%.
 - Precision
