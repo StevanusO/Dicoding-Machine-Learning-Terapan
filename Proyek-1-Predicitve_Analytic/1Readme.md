@@ -1,19 +1,20 @@
 # Laporan Proyek Machine Learning - Stevanus Ong
 
 ## Domain Proyek
+***
 Sebagai respon dari pertumbuhan terhadap ketersedian informasi, opini teks seperti _blog post_  dan _product review_ di sebuah _website_, studi _Sentiment Analysis_ muncul untuk menjawab untuk menjawab satu pertanyaan yaitu _Apa yang orang lain pikirkan terhadap suatu topik atau produk?_ [1] Salah satu upaya untuk menjawab pertanyaan ini adalah dengan membuat model Deep Learning.
 
-Referensi:
 
-  1. [Sentiment Analysis: An Overview](https://www.academia.edu/download/3243118/CompsYelenaMejova.pdf)
 
 ## Business Understanding
+***
 ### Problem Statements
 Adapun masalah yang diangkat sebagai berikut:
 - Apa yang orang lain pikirkan terhadap suatu topik atau produk?
 
 ### Goals
 Adapun tujuan dari proyek ini adalah:
+- Melakukan pra-pemrosesan data dengan baik agar data dapat digunakan dalam pembuatan model
 - Menggunakan Deep Learning untuk memprediksi apa yang dipikirkan orang lain
 
 ### Solution Statements
@@ -22,6 +23,7 @@ Adapun Solusi yang penulis tawarkan sebagai berikut:
 - Menggunakan Classification Report (Precision, Recall, Accuracy dan F1-Score) untuk mengevaluasi model yang dibuat
 
 ## Data Understanding
+***
 Data yang digunkaan untuk melatih model dapat didownload melalui [Kaggle](https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp)
 
 Variabel pada dataset Emotions dataset for NLP adalah sebagai berikut:
@@ -82,11 +84,14 @@ Dari gambar distribusi dari label, dapat dilihat bahwa terdapat ketidakseimbanga
 - Merubah kata pada teks menjadi bentuk dasar
 - Tokenisasi dataset
 ## Modeling
+***
 Penulis membuat arsitektur deep learning yang dapat dilihat sebagai berikut:  
 ![Model_Summary](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/model_summary.png)  
 Dari gambar diatas dapat dilihat, terdapat 4 bagian, yaitu bagian masukan(embedding), bagian hidden_layer_1(Biderectional), bagian hidden_layer_2(Biderectional) dan bagian keluaran(Dense)   
 Model dilatih dengan GoogleColab menggunkaan _GPU accelaration_
+
 ## Evaluation
+***
 Metrik yang digunakan adalah classification report yang terdiri dari 4 metrik, yaitu:
 1. Accuracy
 2. Precision
@@ -142,3 +147,7 @@ Terlihat bahwa model bekerja dengan baik, dari keenam label yang diprediksi dida
 - F1-Score
 Dari keenam label, dapat dilihat bahwa model menghasilkan performa yang baik, terutama pada label sadness dan joy karena hampir mendekati 100%, untuk label love dan surprise mendapatkan nilai 76% dapat disebabkan karena jumlah data dengan label tersebut tidak banyak.
 
+
+Referensi:
+
+  [1] [Sentiment Analysis: An Overview]()
