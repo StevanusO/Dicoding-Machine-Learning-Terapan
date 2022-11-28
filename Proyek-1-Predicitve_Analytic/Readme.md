@@ -224,10 +224,11 @@ Dengan:
 - FP: False Positive
 - FN: False Negative
 
+
 ![model_accuracy](https://user-images.githubusercontent.com/48939864/204292084-ff41b8d6-5ca5-4959-8681-a7e820f97d9e.png)  
 gambar 5 Model Accuracy Plot  
 
-Dapat dilihat dari gambar 5 bahwa setelah _epochs_ ke 200 model membuat model yang _Good Fit_ dengan nilai akurasi _train_ : 99% dan akurasi validasi: 90%  
+Dapat dilihat dari gambar 5 bahwa setelah _epochs_ ke 200 model membuat model yang _Good Fit_ dengan nilai akurasi _train_ : 99% dan akurasi validasi: 90%
 
 Penulis juga menguji model dengan data _test_ yang sebelumnya sudah dipisahkan dengan hasil seperti berikut gambar 6.  
 
