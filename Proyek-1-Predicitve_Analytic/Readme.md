@@ -183,7 +183,11 @@ Tabel 4. Label dirubah dengan LabelEncoder
 Pada bagian ini variabel label dari 1 kolom, yang berisi 6 kategori akan menjadi 6 kolom yang memiliki nilai 0 dan 1 saja. Dengan proses ini mesin dapat menebak kategori yang ada di dataset. Untuk melakukan One Hot Encoding digunakan `to_categorical` dari _library keras.utils_
 
 #### Tokenisasi
-Pada bagian ini akan digunakan `Tokenizer, dan pad_sequences` dari _library tensorflow.keras_, Tujuan tokenisasi adalah untuk membuat kamus dari teks yang berisi tiap kata dan merubah kata menjadi _integer_. Pertama dimulai dnegan membuat kamus dari teks, teks yang akan digunakan hanya _DataFrame train_, penggunaan satu _DataFrame_ ini untuk mencegah agar mesin tidak seolah-olah mengetahui jawaban/kata yang ada di kamus saat dilakukan _test/val_ setelah dibuat kamus dengan `tokenizer.fit_on_texts(X_train)`, selanjutnya teks dari 2 _DataFrame_ akan dirubah menjadi _integer_ perubahan menjadi _integer_ ini 
+Pada bagian ini akan digunakan `Tokenizer, dan pad_sequences` dari _library tensorflow.keras_, Tujuan tokenisasi adalah untuk membuat kamus yang berisi indeks dari teks yang berisi tiap kata dan merubah kata menjadi _integer_. Pertama dimulai dnegan membuat kamus dari teks, teks yang akan digunakan hanya _DataFrame train_, penggunaan satu _DataFrame_ ini untuk mencegah agar mesin tidak seolah-olah mengetahui jawaban/kata yang ada di kamus saat dilakukan _test/val_ setelah dibuat kamus dengan `tokenizer.fit_on_texts(X_train)`, selanjutnya teks dari 3 _DataFrame_ akan dirubah menjadi _integer_ perubahan ini dapat dilakukan dengan memanggil fungsi `tokenizer.texts_to_sequence(X_train)`, `tokenizer.texts_to_sequence(X_test) dan `tokenizer.texts_to_sequence(X_val)`
+
+Setelah teks di tokenisasi, teks di tiap _DataFrame_ perlu kita pastikan memiliki panjang yang sama, untuk melakukan itu digunakan fungsi `pad_sequences` dari _library tensorflow.keras_. teks dari 3 _DataFrame_ memiliki panjang 128, jika teks melebihi dari 128 maka bagian belakang akan dihapus.
+
+
 Referensi:  
   [1]   
   [Prabowo, Rudy, and Mike Thelwall. “Sentiment Analysis: A Combined Approach.” Journal of Informetrics, vol. 3, no. 2, 2009, pp. 143–157., https://doi.org/10.1016/j.joi.2009.01.003.](https://www.sciencedirect.com/science/article/abs/pii/S1751157709000108)
