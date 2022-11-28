@@ -47,11 +47,7 @@ Pada berkas yang diunduh berisi 3 berkas dengan jenis format _.txt_ yang masing-
 3. Menampilkan informasi dari _dataset_
 4. Mengecek dan mengani missing value di _dataset_ (jika ditemukan).
 5. Mengecek _sample text_ yang ada di _DataFrame_
-6. Menghapus angka yang ada di variabel _text_ 
-7. Menghapus tanda baca yang ada di variabel _text_
-8. Merubah tiap kata di variabel _text_ menjadi bentuk dasar
-9. Merubah kata menjadi _lowercase_ pada variabel _text_
-10. Menghapus _stopwords_ pada variabel _text_
+
 ### Mendownload dari kaggle
 Pada proyek ini _dataset_ di download melalui kaggle, untuk mendownload _dataset_ digunakan sebuah _library_ bernama _opendatasets_, selanjutnya dari _library_ akan di _import_ ke code cell dan disingkat sebagai _od_, selanjutnya tinggal memanggil function _downlaod_ pada _od_ seperti berikut:  
 `od.download('https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp')`  
@@ -112,7 +108,43 @@ _Output:_
 > val sample txt: im feeling quite sad and sorry for myself but ill snap out of it soon  
 
 Dari hasil _output_ dapat dilihat bahwa teks yang diambil dari masing-masing dataset masih perlu diprocess karena mengandung kata-kata yang bisa dirubah atau dapat dihapus.
-### _Text Processing_
+***
+## Data Preparation
+***
+### Tahap _Prepation_:
+- Menghapus angka yang ada di variabel _text_ 
+- Menghapus tanda baca yang ada di variabel _text_
+- Merubah tiap kata di variabel _text_ menjadi bentuk dasar
+- Merubah kata menjadi _lowercase_ pada variabel _text_
+- Menghapus _stopwords_ pada variabel _text_
+- Merubah variabel label menjadi numerik
+#### _Text Processing_
+Pada bagian ini, teks yang ada akan di _process_ untuk menghapus, merubah dan _lowercase_, untuk melakukan itu digunakan beberapa _library_ yaitu _re, nltk dan pandas_
+Dibuat sebuah fungsi baru yang bernama *clean_text* yang tugasnya adalah memanggil fungsi yang ada pada 3 _library_.   
+
+_lowercase_ teks menggunakan _pandas_
+`text.lower()`    
+
+Menghapus angka menggunakan _re_ atau _regular expression_  
+`num = re.compile(r'[-+]?[.\d]*[\d]+[:,.\d]*')`  
+`num.sub(r'', text)`  
+
+Menghapus tanda baca menggunakan _re_    
+`punctuations = '@#!?+&*[]-%.:/();$=><|{}^' + "'`"`    
+`for p in punctuations:`   
+ `  text = text.replace(p, f' {p} ') `    
+ 
+Merubah kata menjadi bentuk dasar menggunakan _nltk.stem.WordNetLemmatizer_     
+`lemmatizer = WordNetLemmatizer()#panggil fungsi WordNet dari nltk`  
+`stop_words = [word for word in text.split() if word not in (stopwords)]`  
+`text = ' '.join([lemmatizer.lemmatize(contractions.fix(lower_text(text))) for txt in text.split() if txt not in stop_words])`  
+
+Menghapus _stopwords_ menggunakan _nltk.corpus.stopwords_
+`stopwords = stopwords.words('english') #panggil stopwords dan set ke bahasa inggris`  
+`text = ' '.join([word for word in text.split() if word not in (stopwords)])`  
+
+Jika kita cek perubahan yang dilakukan dengan fungsi `head()` maka hasilnya akan seperti gambar 5.
+
 
 Referensi:  
   [1]   
