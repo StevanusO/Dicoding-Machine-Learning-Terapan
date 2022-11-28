@@ -194,6 +194,20 @@ _Deep Learning_ adalah teknik yang menginzinkan model komputasi yang terdiri dar
 ##### Tahapan umum Cara kerja Deep Learning
 Data akan masuk ke _layer_ pertama, setelah itu di _layer_ pertama akan terdapat sejumlah neuron yang masing-masing akan memproses informasi yang telah diberikan, setiap neuron yang ada di _layer_ ini merepresentasikan informasi yang diproses, misal dengan dataset yang dipakai, neuron 1 bisa saja merepresentasikan sentimen _anger_, informasi yang terbentuk akan disalurkan ke _channel_ penghubung. Sebelum disalurkan dihitung nilai _weight & bias_ yang nilainya akan diterapkan di _activation function_. Hasil dari _activation function_ akan menentukan apakah neuron di _layer_ selanjutnya dapat diaktifkan. Setiap neuron yang diaktifkan akan meneruskan informasi ke _layer_ selanjutnya, ini berlanjut hingga _layer_ terakhir kedua, di layer terakhir kedua, hanya akan ada satu neuron yang diaktifkan untuk menentukan keluaran atau prediksi.
 
+Pada kasus proyek ini bertipe _classification_ dan dataset adalah teks, jadi digunakan _deep learning_ dengan tipe _Biderectional Recurrent-Neural-Network (BRNN)_.
+Manfaat dari tipe ini adalah model dapat mempelajari dan menghafal ketergantugan pola jangka panjang, tipe ini dapat mengingat/menggunakan informasi di layer.
+yang membuat BRNN menarik adalah terdapat 2 RNN yang independen, RNN 1 diberikan input dari layer pertama ke terakhir dan di RNN 2 terbalik. Keluaran dari 2 RNN ini akan digabungkan tiap kali 1 perulangan. Tipe ini mengizinkan jaringan saraf tiruan untuk diberikan informasi _backward_ dan _forward_ setiap perulangan.
+Arsitektur Model yang digunakan adalah sebagai berikut:
+1. _Layer Input_ (Embedding) akan ada 14977 neuron untuk menerima data _input_ dan 64 neuron untuk ke _layer_ selanjutnya.  
+2. hidden layer 1 (Biderectional LSTM) dengan 128 neuron, `return_sequences = True` artinya keluaran dari hidden layer ini akan mengembalikan sebuah _output_ di _layer_ selanjutnya.  
+3. hidden layer 2 (Biderectional LSTM) dnegan 256 neuron.  
+4. _Layer Output_ (Dense) yang akan menerima 6 neuron atau setara dengan jumlah kategori yang ada pada label.  
+5. 
+rangkuman dari arsitektur dapat dilihat di gambar 5  
+
+![rangkuman model](https://github.com/StevanusO/Dicoding-Machine-Learning-Terapan/blob/main/Proyek-1-Predicitve_Analytic/img/model_summary.png) 
+
+
 Referensi:  
   [1]   
   [Prabowo, Rudy, and Mike Thelwall. “Sentiment Analysis: A Combined Approach.” Journal of Informetrics, vol. 3, no. 2, 2009, pp. 143–157., https://doi.org/10.1016/j.joi.2009.01.003.](https://www.sciencedirect.com/science/article/abs/pii/S1751157709000108)
