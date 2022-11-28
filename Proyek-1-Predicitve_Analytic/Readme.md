@@ -61,42 +61,60 @@ Tabel 2. Tampilan _sample_ dari dataset **train_df** dengan bentuk _DataFrame pa
 | - | ---------------------------------------------------- | ------- |
 | 0 | i didnt feel humiliated                              | sadness |
 | 1 | i can go from feeling so hopeless to so damned..     | sadness |
-| 2 | im grabbing a minute to post i feel greedy wrong	a   | anger   |
+| 2 | im grabbing a minute to post i feel greedy wrong	a  | anger   |
 | 3 | i am ever feeling nostalgic about the fireplac..     | love    |
 | 4 | i am feeling grouchy                                 |  anger  |
 ### Menampilkan informasi dari dataset
-Pada bagian ini akan digunakan fungsi shape() dan value_counts() untuk mengetahui jumlah dataset dan distribusi dari label, informasi dari jumlah dan distribusi dapat dilihat pada gambar 1-4.  
+Pada bagian ini akan digunakan fungsi shape() dan value_counts() untuk mengetahui jumlah dataset dan distribusi dari label, informasi dari jumlah dan distribusi dapat dilihat pada tabel 3-6.  
 
-![dataset_shape](https://user-images.githubusercontent.com/48939864/204278699-de1aea6d-ef74-44fe-8cd4-24656aa04c18.png)  
-gambar 1. _Dataset Shape_    
+Tabel 3. _Dataset Shape_    
 
-![distribusi_train_numeric](https://user-images.githubusercontent.com/48939864/204278896-10524a1b-144f-4734-bbf4-3a3e14b04ea8.png)  
-gambar 2. distribusi label pada **train_df**  
+| DataFrame | Shape      |
+| ---- ---- | ---------- |
+| train     | (16000, 2) |
+| test      | (2000, 2)  |
+| val       | (2000, 2)  |
 
-![distribusi_test_numeric](https://user-images.githubusercontent.com/48939864/204279020-0cb7fc61-8ab8-40bb-b72f-9d9dce104a4e.png)    
-gambar 3. distribusi label pada **test_df**    
+Tabel 4. distribusi label pada **train_df**  
 
-![distribusi_val_numeric](https://user-images.githubusercontent.com/48939864/204278968-9380058c-e8cc-4ace-9df0-d67c3146e902.png)    
-gambar 4. distribusi label pada **val_df**    
+| label    | jumlah |
+| -------- | ------ |
+| joy      | 5362   |
+| sadness  | 4666   |
+| anger    | 2159   |
+| fear     | 1937   |
+| love     | 1304   |
+| surprise | 572    |
+
+
+Tabel 5. distribusi label pada **test_df**    
+
+| label    | jumlah |
+| -------- | ------ |
+| joy      | 695    |
+| sadness  | 581    |
+| anger    | 275    |
+| fear     | 224    |
+| love     | 159    |
+| surprise | 66     |
+
+Tabel 6. distribusi label pada **val_df**    
+
+| label    | jumlah |
+| -------- | ------ |
+| joy      | 704    |
+| sadness  | 550    |
+| anger    | 275    |
+| fear     | 212    |
+| love     | 178    |
+| surprise | 81     |
 
 ### Mengecek missing value dan menangani jika ditemukan
 Pada bagian ini digunakan fungsi `isnull().sum()` untuk tiap _DataFrame_. Saat dicek tidak ditemukan adanya _missing value_ pada 3 _DataFrame_
 
 ### Mengecek _sample text_ yang ada di _DataFrame_
-pada bagian ini akan diambil satu _sample_ teks dari masing-masing _DataFrame_, untuk mengambil satu _sample_ digunakan index. 
-`sample_train = train_df['text'][0]`  
-
-`sample_test = test_df['text'][0]`  
-
-`sample_val = val_df['text'][0]`  
-
-Setelah itu akan di _print_ untuk mengecek _sample_ dari teks
-`print("train sample txt:", sample_train)`  
-
-`print("test sample txt:", sample_test)`  
-
-`print("val sample txt:", sample_val)`  
-
+pada bagian ini akan diambil satu _sample_ contoh, untuk melihat akan digunakan index ke 0. Melihat _sample_ ini berguna untuk mengecek apa saja yang perlu dilakukan pada tahap _data preparation_.   
+Berikut adalah contoh _sample_ dari tiap _DataFrame_:  
 _Output:_
 > train sample txt: i didnt feel humiliated  
 > test sample txt: im feeling rather rotten so im not very ambitious right now  
@@ -127,8 +145,8 @@ Merubah kata menjadi bentuk dasar menggunakan _nltk.stem.WordNetLemmatizer_, car
 
 Menghapus _stopwords_ menggunakan _nltk.corpus.stopwords_, cara kerjanya adalah dengan mengecek seluruh kata yang ada di teks, kemudian akan dibandingkan dengan _list_ yang ada di _stopwords_ jika ditemukan kata pada teks yang ada di _list stopwords_ maka akan dihapus.      
 
-Jika kita cek perubahan yang dilakukan dengan fungsi `head()` maka hasilnya akan seperti Tabel 3.  
-Tabel 3. Tampilan _sample_ dari train_df setelah _text processing_ dilakukan.   
+Jika kita cek perubahan yang dilakukan dengan fungsi `head()` maka hasilnya akan seperti Tabel 7.  
+Tabel 7. Tampilan _sample_ dari train_df setelah _text processing_ dilakukan.   
 | text                                                | label   | clean_text                                        | encoded_label |
 | --------------------------------------------------- | ------- | ------------------------------------------------- | ------------- |
 | can go from feeling so hopeless to so damned...     | sadness | go feeling hopeless damned hopeful around some..  | 4             |
@@ -136,9 +154,9 @@ Tabel 3. Tampilan _sample_ dari train_df setelah _text processing_ dilakukan.
 | im grabbing a minute to post i feel greedy wrong    | anger   | grabbing minute post feel greedy wrong grabbin... | 0             |  
 
 #### Merubah label menjadi numerik
-Pada bagian ini variabel label akan dirubah dari kategorikal menjadi numerik. Variabel label memiliki 6 kategori yaitu _anger, fear, joy, love, sadness_ dan _surprise_. kategori ini akan dirubah menjadi numerik (0-5) dengan menggunakan `LabelEncoder`.   
+Pada bagian ini variabel label akan dirubah dari kategorikal menjadi numerik. Variabel label memiliki 6 kategori yaitu _anger, fear, joy, love, sadness_ dan _surprise_. kategori ini akan dirubah menjadi numerik (0-5) dengan menggunakan `LabelEncoder` seperti di tabel 8.   
 
-Tabel 4. Label dirubah dengan LabelEncoder
+Tabel 8. Label dirubah dengan LabelEncoder
 | label    | label_encode |
 | -------- | ------------ |
 | anger    | 0            |
@@ -172,8 +190,8 @@ Arsitektur Model yang digunakan adalah sebagai berikut:
 2. hidden layer 1 (Biderectional LSTM) dengan 128 neuron, `return_sequences = True` artinya keluaran dari hidden layer ini akan mengembalikan sebuah _output_ di _layer_ selanjutnya.  
 3. hidden layer 2 (Biderectional LSTM) dnegan 256 neuron.  
 4. _Layer Output_ (Dense) yang akan menerima 6 neuron atau setara dengan jumlah kategori yang ada pada label.  
-rangkuman dari arsitektur dapat dilihat di tabel 5.  
-Tabel 5. Rangkuman _Model_.  
+rangkuman dari arsitektur dapat dilihat di tabel 9.  
+Tabel 9. Rangkuman _Model_.  
 
 | layer   | Jenis layer     | Neuron                   |  
 | ------- | --------------- | ------------------------ |  
@@ -208,13 +226,13 @@ Dengan:
 
 
 ![model_accuracy](https://user-images.githubusercontent.com/48939864/204292084-ff41b8d6-5ca5-4959-8681-a7e820f97d9e.png)  
-gambar 5 Model Accuracy Plot  
+gambar 1. Model Accuracy Plot  
 
-Dapat dilihat dari gambar 5 bahwa setelah _epochs_ ke 200 model membuat model yang _Good Fit_ dengan nilai akurasi _train_ : 99% dan akurasi validasi: 90%
+Dapat dilihat dari gambar 1 bahwa setelah _epochs_ ke 200 model membuat model yang _Good Fit_ dengan nilai akurasi _train_ : 99% dan akurasi validasi: 90%
 
-Penulis juga menguji model dengan data _test_ yang sebelumnya sudah dipisahkan dengan hasil seperti berikut tabel 6.  
+Penulis juga menguji model dengan data _test_ yang sebelumnya sudah dipisahkan dengan hasil seperti berikut tabel 10.  
 
-Tabel 6. _Classification Report_
+Tabel 10. _Classification Report_
 
 |              | precision | recall | f1-score | support |
 | ------------ | --------- | ------ | -------- | ------- |
@@ -264,7 +282,8 @@ Terlihat bahwa model bekerja dengan baik, dari keenam label yang diprediksi dida
 Dari keenam label, dapat dilihat bahwa model menghasilkan performa yang baik, terutama pada label sadness dan joy karena hampir mendekati 100%, untuk label love dan surprise mendapatkan nilai 76% dapat disebabkan karena jumlah data dengan label tersebut tidak banyak.
 
 - Kesimpulan
-Dari hasil gambar 5 kita dapat melihat bahwa model mendapatkan performa yang baik dalam _train_ dengan akurasi 99% dan validasi 90%, performa baik ini juga dibuktikan dengan evaluasi _model_ menggunakan data _test_ yang disiapkan. Dari data _test_ dapat dibuat _classification report_ yang ada di gambar 6. Dari gambar 6 kita dapat melihat skor dari _model_ terhadap 3 metrik yang di _generate_ oleh _classification report_, dilihat dari hasil dapat disimpulkan bahwa _model_ yang dibuat _Good Fit_.
+Dari hasil gambar 1 kita dapat melihat bahwa model mendapatkan performa yang baik dalam _train_ dengan akurasi 99% dan validasi 90%, performa baik ini juga dibuktikan dengan evaluasi _model_ menggunakan data _test_ yang disiapkan. Dari data _test_ dapat dibuat _classification report_ yang ada di tabel 10. Dari tabel 10 kita dapat melihat skor dari _model_ terhadap 3 metrik yang di _generate_ oleh _classification report_, dilihat dari hasil dapat disimpulkan bahwa _model_ yang dibuat _Good Fit_.  
+
 Referensi:  
   [1]    
   [Prabowo, Rudy, and Mike Thelwall. “Sentiment Analysis: A Combined Approach.” Journal of Informetrics, vol. 3, no. 2, 2009, pp. 143–157., https://doi.org/10.1016/j.joi.2009.01.003.](https://www.sciencedirect.com/science/article/abs/pii/S1751157709000108)
