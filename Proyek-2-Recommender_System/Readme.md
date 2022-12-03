@@ -21,7 +21,7 @@ Tujuan dibuatnya proyek ini adalah sebagai berikut:
 ### Solution Approach
 Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya:
 - Membuat sebuah model sistem rekomendasi 
-- 
+- Mengevaluasi hasil rekomendasi yang diberikan
   
  
 
