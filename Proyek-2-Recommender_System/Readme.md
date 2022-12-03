@@ -23,7 +23,106 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya:
 - Membuat sebuah model sistem rekomendasi 
 - Mengevaluasi hasil rekomendasi yang diberikan
   
- 
+## Data Understanding
+***
+Dataset yang digunakan dapat diakses menggunakan [kaggle](https://www.kaggle.com/datasets/ruchi798/bookcrossing-dataset)  
+Informasi dari dataset dapat dilihat di Tabel 1.  
+Tabel 1. Rangkuman informasi Dataset
+
+| Jenis                  | Keterangan                                                                                                        |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Sumber                 | [Book-Crossing: User review ratings](https://www.kaggle.com/datasets/ruchi798/bookcrossing-dataset)               |
+| Lisensi                | [CC0: Public Domain](https://creativecommons.org/publicdomain/zero/1.0/)                                          |
+| Kategori               | Arts and Entertainment, Online Communities, Literature                                                            |
+| Jenis & Ukuran berkas  | ZIP (600.34 MB)                                                                                                   |  
+***
+Setelah melakukan observasi pada dataset yang diunduh pada kaggle, didapat informasi sebagai berikut:
+- Terdapat 1031175 baris dalam _dataset_
+- Terdapat 19 kolom yaitu 'Unnamed: 0', 'user_id', 'location', 'age', 'isbn', 'rating', 'book_title', 'book_author', 'year_of_publication', 'publisher', 'img_s', 'img_m', 'img_l', 'Summary', 'Language', 'Category', 'city', 'state', 'country'.  
+
+Untuk penjelasan mengenai 19 kolom yaitu sebagai berikut:  
+- `user_id` : id dari pengguna
+- `location` : lokasi/alamat pengguna
+- `age` : umur pengguna
+- `isbn` : kode ISBN (International Standard Book Number) buku
+- `rating` : rating dari buku
+- `book_title` : judul buku
+- `book_author` : penulis buku
+- `year_of_publication` : tahun terbit buku
+- `publisher` : penerbit buku
+- `img_s` : gambar sampul buku (ukuran kecil)
+- `img_m` : gambar sampul buku (ukuran sedang)
+- `img_l` : gambar sampul buku (ukuran besar)
+- `Summary` : ringkasan/sinopsis buku
+- `Language` : bahasa yang digunakan buku
+- `Category` : kategori buku
+- `city` : kota pengguna
+- `state` : negara bagian penguna
+- `country` : negara pengguna
+***
+### Data Exploration
+Tabel 2. Sample Data
+
+| Unnamed: 0 | user_id | location | age | isbn | rating | book_title | book_author | year_of_publication | publisher | img_s | img_m | img_l | summary | language | category | city | state | country |  
+| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | 
+| 0 | 0 | 2 | stockton, california, usa | 18 | 0195153448 | 0 | Classical Mythology | 2002 | Oxford University Press | http://images.amazon.com/images/P/0195153448.0... | http://images.amazon.com/images/P/0195153448.0... | http://images.amazon.com/images/P/0195153448.0...  | Provides an introduction to classical myths pl... | en | ['Social Science'] | stockton | california | usa  
+
+
+Tabel 3. informasi singkat mengenai data  
+
+| #  | Column       		| Non-Null Count | Dtype  |
+| -- | -------------------- | -------------- | ------ |
+| 0  | Unnamed: 0  			| 1031175  		 | int64  |
+| 1  | user_id      		| 1031175  		 | int64  |
+| 2  | location  			| 1031175  		 | object |
+| 3  | age  				| 1031175  		 | float64|
+| 4  | isbn  				| 1031175  		 | object |
+| 5  | rating  				| 1031175  		 | int64  |
+| 6  | book_title   		| 1031175  		 | object |
+| 7  | book_author 			| 1031175  		 | object |
+| 8  | year_of_publication  | 1031175  		 | float64|
+| 9  | publisher 			|  1031175 		 | object |
+| 10 | img_s				| 1031175  		 | object |
+| 11 | img_m				| 1031175  		 | object |
+| 12 | img_l				| 1031175  		 | object |
+| 13 | Summary				| 1031175  		 | object |
+| 14 | Language				| 1031175  		 | object |
+| 15 | Category				| 1031175  		 | object |
+| 16 | city					| 1017072  		 | object |
+| 17 | state				| 1008377  		 | object |
+| 18 | country 				| 995801   		 | object |
+
+Tabel 4. Distribusi variabel rating
+
+| rating | count |
+|--------|-------|
+|0       |647323 |
+|1       |1481   |
+|2       |2375   |
+|3       |5118   |
+|4       |7617   |
+|5       |45355  |
+|6       |31689  |
+|7       |66404  |
+|8       |91806  |
+|9       |60780  |
+|10      |71227  |
+
+Dari tabel 2 dan 3, dapat dilihat ada beberapa kolom yang tidak akan digunakan dan akan lebih baik jika di hapus. Dari tabel 4 dapat dilihat bahwa 0 ada rating artinya pengguna pernah membaca buku, tetapi tidak memberikan rating, sehingga akan lebih baik jika rating 0 di hapus, menyisakan 1 s.d. 10.
+
+## Data Preparation
+***
+### Langkah-langkah pra-pemrosesan data
+1. Membaca _dataset_ menggunakan _pandas_
+2. _Drop_ data kosong (_NaN_)
+3. _Drop_ kolom yang tidak akan digunakan
+4. _Drop_ nilai yang _invalid_ pada kolom
+
+#### Membaca _dataset_
+
+#### Drop data kosong
+
+#### Drop kolom/nilai 
 
 ## Referensi
 [[1]](https://media.neliti.com/media/publications/96720-ID-rumah-baca-jendela-dunia-sebuah-model-pe.pdf) Gresi A.R., Alan N., Khasanah B.R., Robby A.S., Priyadi N.P. (2013). Rumah Baca Jendela Dunia, Sebuah Model Perpustakaan Panti Asuhan. Jurnal Ilmiah Mahasiswa, Vol. 3 No.2. https://media.neliti.com/media/publications/96720-ID-rumah-baca-jendela-dunia-sebuah-model-pe.pdf
