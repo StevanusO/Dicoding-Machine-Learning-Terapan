@@ -124,9 +124,19 @@ Pada bagian ini akan digunakan _library pandas_ untuk dapat membaca dan merubah 
 #### Drop data kosong
 Pada bagian ini kita dapat melihat tabel 3 bahwa kolom `city, state, dan country` jumlahnya tidak sama dengan kolom lainnya. Untuk proyek ini, akan digunakan fungsi `dropna()`, dengan fungsi ini jika ada data kosong dalam bagian baris _DataFrame_ maka seluruh baris akan dihapus. Untuk melihat _count_ dari tiap kolom setelah dihapus dapat dilihat di tabel 5. 
 
-Tabel 5. Informasi tentang data setelah _preprocess_
+Tabel 5. Informasi tentang data setelah _preprocess_  
+
+| #  | Column               | Non-Null Count | Dtype  |
+| -- | -------------------- | -------------- | ------ |
+| 0  | user_id              | 217314         | int64  |
+| 1  | rating               | 217314         | int64  |
+| 2  | book_title           | 217314         | object |
+| 3  | book_author          | 217314         | object |
+| 4  | publisher            | 217314         | object |
+| 5  | Category             | 217314         | object |
 
 #### Drop kolom/nilai 
+Pada bagian ini akan di hapus kolom yang tidak akan digunakan, tujuan penghapusan ini adalah untuk mengurangi dimensi yang dibutuhkan, berikut adalah kolom yang dihapus `'Unnamed: 0','location','isbn', 'img_s','img_m', 'img_l', 'city','age','state','Language','country', 'year_of_publication', 'Summary'`. Selain kolom akan dihapus nilai yang tidak sesuai dengan konteks seperti pada kolom Category `'9'` dan 0 pada rating.
 
 ## Referensi
 [[1]](https://media.neliti.com/media/publications/96720-ID-rumah-baca-jendela-dunia-sebuah-model-pe.pdf) Gresi A.R., Alan N., Khasanah B.R., Robby A.S., Priyadi N.P. (2013). Rumah Baca Jendela Dunia, Sebuah Model Perpustakaan Panti Asuhan. Jurnal Ilmiah Mahasiswa, Vol. 3 No.2. https://media.neliti.com/media/publications/96720-ID-rumah-baca-jendela-dunia-sebuah-model-pe.pdf
