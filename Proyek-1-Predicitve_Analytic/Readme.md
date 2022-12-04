@@ -273,7 +273,7 @@ Terlihat bahwa model bekerja dengan baik, dari keenam label yang diprediksi dida
   dari 66 data yang model prediksi, 82% diprediksi memiliki perasaan terkejut.  
   
 - Recall
-- anger
+  - anger
   dari 91% yang diprediksi memiliki perasaan marah, hanya 88% menghasilkan benar. 
   - fear
   dari 89% yang diprediksi memiliki perasaan ketakutan, hanya 86% menghasilkan benar. 
