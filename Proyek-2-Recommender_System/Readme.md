@@ -117,7 +117,7 @@ Dari tabel 2 dan 3, dapat dilihat ada beberapa kolom yang tidak akan digunakan d
 2. _Drop_ data kosong (_NaN_)
 3. _Drop_ kolom yang tidak akan digunakan
 4. _Drop_ nilai yang _invalid_ pada kolom
-
+5. Pemilihan _Category_
 #### Membaca _dataset_
 Pada bagian ini akan digunakan _library pandas_ untuk dapat membaca dan merubah _dataset_ menjadi _DataFrame_,  dari berkas yang diunduh akan ada 2 _file_, diproyek ini digunakan file dengan nama _Books Data with Category Language and Summary_ yang didalam file akan ditemukan berkas csv yang datanya sudah di proses terlebih dahulu. _Sample dari _dataset_ ini dapat dilihat pada tabel 2.
 
@@ -136,7 +136,61 @@ Tabel 5. Informasi tentang data setelah _preprocess_
 | 5  | Category             | 217314         | object |
 
 #### Drop kolom/nilai 
-Pada bagian ini akan di hapus kolom yang tidak akan digunakan, tujuan penghapusan ini adalah untuk mengurangi dimensi yang dibutuhkan, berikut adalah kolom yang dihapus `'Unnamed: 0','location','isbn', 'img_s','img_m', 'img_l', 'city','age','state','Language','country', 'year_of_publication', 'Summary'`. Selain kolom akan dihapus nilai yang tidak sesuai dengan konteks seperti pada kolom Category `'9'` dan 0 pada rating.
+Pada bagian ini akan di hapus kolom yang tidak akan digunakan, tujuan penghapusan ini adalah untuk mengurangi dimensi yang dibutuhkan, berikut adalah kolom yang dihapus `'Unnamed: 0','location','isbn', 'img_s','img_m', 'img_l', 'city','age','state','Language','country', 'year_of_publication', 'Summary'`. Selain kolom akan dihapus nilai yang tidak sesuai dengan konteks seperti pada kolom Category `'9'` dan 0 pada rating. Hasil akhir dapat dilihat pada tabel 5.
+
+### Pemilihan _Category_
+Pada bagian ini akan dipilih dari _category_ secara spesifik, pemilihan ini dilakukan dikarenakan sumber daya yang dimiliki untuk menghitung tidak memadai untuk menggunakan seluruh _category_. _Category_ yang akan dipakai adalah `'Religion', 'Body Mind Spirit', 'Juvenile Nonfiction', 'Social Science', 'Business Economics', 'Family Relationships', 'Self Help', 'Health Fitness', 'Cooking', 'Travel', 'Poetry', 'True Crime', 'Psychology', 'Science', 'Computers'`.
+
+## Modeling
+***
+### TF-IDF Vektorisasi
+Pada tahap ini, akan membangun sistem rekomendasi berdasarkan _category_ yang dimiliki buku. Teknik ini digunakan pada sistem rekomendasi untuk menemukan representasi fitur penting dari setiap _category_ buku. _Sample_ dari hasil tf-idf dapat dilihat pada tabel 6.
+
+Tabel 6. _Sample_ TF-IDF
+| title                                                                              | health_fitness | religion | family_relationship | cooking | social_science |
+| ---------------------------------------------------------------------------------- | -------------- | -------- | ------------------- | ------- | -------------- |
+| The Pain Tree                                                                      | 0              | 0        | 0                   | 0       | 0              |
+| Brave New Families: Stories of Domestic Upheaval in Late Twentieth Century America | 0              | 0        | 1                   | 0       | 0              |
+
+pada tabel 6 menunjukkan bahwa Brave New Families bertipe kategori `family_relationship` Hal ini terlihat nilai matriks 1 pada kategori yang `family_relationship`.
+
+### Cosine Similarity
+Pada tahap sebelumnya, telah berhasil mengidentifikasi korelasi antara nama buku dengan kategorinya. Sekarang, akan dihitung derajat kesamaan (_similarity degree_) antar nama buku dengan menggunakan teknik _cosine similarity_. _Sample_ dari hasil dapat dilihat pada tabel 7.
+
+Tabel 7. _Sample Cosine Similarity_
+
+| title                           | A Book of Middle Eastern Food | Windows XP in a Nutshell |
+| ------------------------------- | ----------------------------- | ------------------------ |
+| Macromedia Flash MX for Dummies | 0                             | 1                        |
+| The Sacred Yew (Arkana S.)      | 0                             | 0                        |
+
+Pada tabel 7, dapat di identifikasikan kesamaan antara satu nama buku dengan nama buku lainnya. Jika dilihat nama buku Macromedia Flash MX for Dummies memiliki kategori yang sama dengan Windows XP in Nutshell, kesamaan ini ditandai dengan nilai 1 pada matriks.
+
+## Evaluasi
+***
+Di tahap sebelumnya data sudah di vektorisasi dan dicari _similarity degree_. Untuk mengetahui seberapa baik model dalam memberikan sebuah rekomendasi dapat dibuah sebuah fungsi yang akan menerima `nama_buku, similarity_data, items, k` dengan definis masing-masing parameter sebagai berikut:
+- `nama_buku`: Nama buku
+- `similarity_data`: _DataFrame_ mengenai _similarity_ yang telah dibuat di tahap sebelumnya.
+- `items`: Nama dan fitur yang digunakan untuk mendefinisikan kemiripan, dalam hal ini adalah `title` dan `category`
+- `k`: Banyak rekomendasi yang ingin diberikan.
+
+Fungsi ini bekerja dengan mengambil sejumlah nilai k tertinggi dari *similarity_data*. Kemudian, mengambil data dari bobot tertinggi ke terendah. Data ini dimasukkan kedalam sebuah variabel bernama `closest`. Berikutnya akan dihapus nama_buku yang dicari agar tidak muncul dalam daftar rekomendasi.
+Berikut adalah contoh, akan dimasukkan `Macromedia Flash MX for Dummies` sebagai `nama_buku`, dan akan diberikan 10 rekomendasi buku yang mirip. Hasil rekomendasi dapat dilihat pada tabel 8.
+
+Tabel 8. Hasil Rekomendasi `Macromedia Flash MX for Dummies`
+
+| #  | title                                              | category     |
+| -- | -------------------------------------------------- | ------------ |
+| 1  | Learning the vi Editor (6th Edition)               | Computers    |
+| 2  | Transact-SQL Programming                           | Computers    |
+| 3  | Developing JavaBeans Using VisualAge for Java,...  | Computers    |
+| 4  | Running Microsoft Frontpage 2000                   | Computers    |
+| 5  | Flash 5.0: Graphics, Animation & Interactivity     | Computers    |
+| 6  | Linux System Administration: A User's Guide	      | Computers    |
+| 7  | XML Complete                                       | Computers    |
+| 8  | Introduction to MFC Programming with Visual C++    | Computers    |
+| 9  | Visual Basic 3 for Dummies (For Dummies)           | Computers    |
+| 10 | Running Microsoft Excel 2000 (Running)             | Computers    |
 
 ## Referensi
 [[1]](https://media.neliti.com/media/publications/96720-ID-rumah-baca-jendela-dunia-sebuah-model-pe.pdf) Gresi A.R., Alan N., Khasanah B.R., Robby A.S., Priyadi N.P. (2013). Rumah Baca Jendela Dunia, Sebuah Model Perpustakaan Panti Asuhan. Jurnal Ilmiah Mahasiswa, Vol. 3 No.2. https://media.neliti.com/media/publications/96720-ID-rumah-baca-jendela-dunia-sebuah-model-pe.pdf
