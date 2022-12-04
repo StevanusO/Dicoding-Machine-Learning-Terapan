@@ -119,8 +119,12 @@ Dari tabel 2 dan 3, dapat dilihat ada beberapa kolom yang tidak akan digunakan d
 4. _Drop_ nilai yang _invalid_ pada kolom
 
 #### Membaca _dataset_
+Pada bagian ini akan digunakan _library pandas_ untuk dapat membaca dan merubah _dataset_ menjadi _DataFrame_,  dari berkas yang diunduh akan ada 2 _file_, diproyek ini digunakan file dengan nama _Books Data with Category Language and Summary_ yang didalam file akan ditemukan berkas csv yang datanya sudah di proses terlebih dahulu. _Sample dari _dataset_ ini dapat dilihat pada tabel 2.
 
 #### Drop data kosong
+Pada bagian ini kita dapat melihat tabel 3 bahwa kolom `city, state, dan country` jumlahnya tidak sama dengan kolom lainnya. Untuk proyek ini, akan digunakan fungsi `dropna()`, dengan fungsi ini jika ada data kosong dalam bagian baris _DataFrame_ maka seluruh baris akan dihapus. Untuk melihat _count_ dari tiap kolom setelah dihapus dapat dilihat di tabel 5. 
+
+Tabel 5. Informasi tentang data setelah _preprocess_
 
 #### Drop kolom/nilai 
 
