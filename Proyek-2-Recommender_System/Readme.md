@@ -187,11 +187,20 @@ Tabel 8. Hasil Rekomendasi `Macromedia Flash MX for Dummies`
 | 9  | Visual Basic 3 for Dummies (For Dummies)           | Computers    |
 | 10 | Running Microsoft Excel 2000 (Running)             | Computers    |
 
-## Evaluasi
-***
-
 Fungsi diatas bekerja dengan mengambil sejumlah nilai k tertinggi dari *similarity_data*. Kemudian, mengambil data dari bobot tertinggi ke terendah. Data ini dimasukkan kedalam sebuah variabel bernama `closest`. Berikutnya akan dihapus nama_buku yang dicari agar tidak muncul dalam daftar rekomendasi.
 Berikut adalah contoh, akan dimasukkan `Macromedia Flash MX for Dummies` sebagai `nama_buku`, dan akan diberikan 10 rekomendasi buku yang mirip. Hasil rekomendasi dapat dilihat pada tabel 8.
+
+## Evaluasi
+***
+Pada tahap ini akan digunakan _Precision_ untuk mengevaluasi hasil dari rekomendasi pada tabel 8. _Precision_ dapat didefinisikan sebagai berikut:  
+
+$\text{Precision} = \frac{r}{i}$
+
+- r= total rekomendasi yang relevan
+- i= jumlah rekomendasi yang diberikan
+
+Dari hasil rekomendasi di tabel 8, diketahui bahwa `Macromedia Flash MX for Dummies` masuk ke dalam kategori _Computers_. Dari 10 _item_ yang direkomendasikan, 10 _item_ memiliki kategori _Computers_ (_similar_). Artinya, _precision_ sistem sebesar 10/10 atau 100%.
+
 
 
 
