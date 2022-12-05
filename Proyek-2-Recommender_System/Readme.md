@@ -166,16 +166,11 @@ Tabel 7. _Sample Cosine Similarity_
 
 Pada tabel 7, dapat di identifikasikan kesamaan antara satu nama buku dengan nama buku lainnya. Jika dilihat nama buku Macromedia Flash MX for Dummies memiliki kategori yang sama dengan Windows XP in Nutshell, kesamaan ini ditandai dengan nilai 1 pada matriks.
 
-## Evaluasi
-***
-Di tahap sebelumnya data sudah di vektorisasi dan dicari _similarity degree_. Untuk mengetahui seberapa baik model dalam memberikan sebuah rekomendasi dapat dibuah sebuah fungsi yang akan menerima `nama_buku, similarity_data, items, k` dengan definis masing-masing parameter sebagai berikut:
+Di tahap sebelumnya data sudah di vektorisasi dan dicari _similarity degree_. Untuk mengetahui seberapa baik model dalam memberikan sebuah rekomendasi dapat dibuah sebuah fungsi yang akan menerima `nama_buku, similarity_data, items, k` dengan definisi masing-masing parameter sebagai berikut:
 - `nama_buku`: Nama buku
 - `similarity_data`: _DataFrame_ mengenai _similarity_ yang telah dibuat di tahap sebelumnya.
 - `items`: Nama dan fitur yang digunakan untuk mendefinisikan kemiripan, dalam hal ini adalah `title` dan `category`
 - `k`: Banyak rekomendasi yang ingin diberikan.
-
-Fungsi ini bekerja dengan mengambil sejumlah nilai k tertinggi dari *similarity_data*. Kemudian, mengambil data dari bobot tertinggi ke terendah. Data ini dimasukkan kedalam sebuah variabel bernama `closest`. Berikutnya akan dihapus nama_buku yang dicari agar tidak muncul dalam daftar rekomendasi.
-Berikut adalah contoh, akan dimasukkan `Macromedia Flash MX for Dummies` sebagai `nama_buku`, dan akan diberikan 10 rekomendasi buku yang mirip. Hasil rekomendasi dapat dilihat pada tabel 8.
 
 Tabel 8. Hasil Rekomendasi `Macromedia Flash MX for Dummies`
 
@@ -191,6 +186,14 @@ Tabel 8. Hasil Rekomendasi `Macromedia Flash MX for Dummies`
 | 8  | Introduction to MFC Programming with Visual C++    | Computers    |
 | 9  | Visual Basic 3 for Dummies (For Dummies)           | Computers    |
 | 10 | Running Microsoft Excel 2000 (Running)             | Computers    |
+
+## Evaluasi
+***
+
+Fungsi diatas bekerja dengan mengambil sejumlah nilai k tertinggi dari *similarity_data*. Kemudian, mengambil data dari bobot tertinggi ke terendah. Data ini dimasukkan kedalam sebuah variabel bernama `closest`. Berikutnya akan dihapus nama_buku yang dicari agar tidak muncul dalam daftar rekomendasi.
+Berikut adalah contoh, akan dimasukkan `Macromedia Flash MX for Dummies` sebagai `nama_buku`, dan akan diberikan 10 rekomendasi buku yang mirip. Hasil rekomendasi dapat dilihat pada tabel 8.
+
+
 
 ## Referensi
 [[1]](https://media.neliti.com/media/publications/96720-ID-rumah-baca-jendela-dunia-sebuah-model-pe.pdf) Gresi A.R., Alan N., Khasanah B.R., Robby A.S., Priyadi N.P. (2013). Rumah Baca Jendela Dunia, Sebuah Model Perpustakaan Panti Asuhan. Jurnal Ilmiah Mahasiswa, Vol. 3 No.2. https://media.neliti.com/media/publications/96720-ID-rumah-baca-jendela-dunia-sebuah-model-pe.pdf
